@@ -27,8 +27,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#escritorio">O Escritorio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#profissional">Quem sou</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#equipe">Equipe</a></li>
                         <li class="nav-item"><a class="nav-link" href="#atuacao">Áreas de atuação</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#artigos">Artigos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
                     </ul>
                 </div>
@@ -90,46 +91,84 @@
                 </div>
             </div>
         </section>
-        <!-- profissional-->
-        <section class="page-section" id="profissional">
+        <!-- equipe-->
+        <section class="page-section" id="equipe" v-cloak>
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="mt-0">Quem sou</h2>
+                        <h2 class="mt-0">Equipe</h2>
                         <hr class="divider" />
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="img-me"></div>
+                    <div class="col-md-6 col-xs-12 col-lg-4" v-for="(professional, index) in team" :key="index">
+                        <div class="card card-team" @click="professionalSelected = team[index]" data-bs-toggle="modal" data-bs-target="#professionalViewModal">
+                            <img :src="professional.image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ professional.name }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ professional.job }}</h6>
+                                <p class="card-text">{{ professional.shortDescription }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="mb-4 text-justify px-3">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et varius lectus. 
-                                Nullam fermentum non erat eget auctor. Sed vitae nibh gravida, ullamcorper ipsum pretium, 
-                                feugiat magna. Nam semper vitae urna quis lacinia. Vivamus a mauris eu magna maximus facilisis 
-                                vel et sem. Integer dignissim, lectus in porttitor aliquam, nisl elit congue risus, in auctor 
-                                leo urna fringilla mauris. Cras viverra iaculis lorem in egestas. Nullam id mauris odio. 
-                                Praesent bibendum pharetra velit, ut laoreet velit tristique sit amet. Pellentesque tincidunt
-                                 lacus id sapien mollis, id ullamcorper orci ornare. Class aptent taciti sociosqu ad litora 
-                                 torquent per conubia nostra, per inceptos himenaeos. Vivamus condimentum vel elit eget aliquam.
-                            </p>
-                            <ul>
-                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                <li>Vivamus ultricies lacus vel odio pharetra venenatis vitae vitae velit.</li>
-                                <li>Donec egestas purus ut justo elementum facilisis.</li>
-                                <li>Phasellus ac leo quis mauris elementum gravida in eget turpis.</li>
-                                <li>Duis in metus ut orci scelerisque fringilla.</li>
-                                <li>Donec egestas nisi at laoreet scelerisque.</li>
-                                <li>Phasellus sed enim tincidunt, tristique erat malesuada, placerat diam.</li>
-                            </ul>
+                    
+                </div>
+
+                <!-- Modal profissional -->
+                <div class="modal fade" id="professionalViewModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="professionalViewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <div class="modal-body" v-if="professionalSelected">
+
+                                <div class="row">
+                                    <div class="col-1 m-auto section-arrow-icon" @click="setProfessional(professionalSelected.previous)">
+                                        <img src="./assets/img/icons/left-arrow.png" class="arrow-icon">
+                                    </div>
+
+                                    <div class="col-10" id="professionalContent">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h3>{{ professionalSelected.name }}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-muted">
+                                                        <h5>{{ professionalSelected.job }}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <img :src="professionalSelected.image" style="height: 10vh;">
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <p>
+                                                    {{ professionalSelected.description }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-1 m-auto section-arrow-icon" @click="setProfessional(professionalSelected.next)">
+                                        <img src="./assets/img/icons/right-arrow.png" class="arrow-icon">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+   
         <!-- atuacao-->
         <section class="page-section bg-primary" id="atuacao">
             <div class="container px-4 px-lg-5">
@@ -164,23 +203,81 @@
             </div>
         </section>
       
-        <!-- contato-->
-        <section class="page-section bg-light" id="contato">
+        <!-- Artigos-->
+        <section class="page-section" id="artigos">
             <div class="container px-4 px-lg-5">
-                <h2 class="text-center mt-0">Contato</h2>
-                <hr class="divider" />
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="mt-0">Artigos</h2>
+                        <hr class="divider" />
+                    </div>
+                </div>
+
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-md-6 col-xs-12 col-lg-4" v-for="(newsItem, index) in news" :key="index">
+                        <div class="card card-team" @click="newsSelected = news[index]" data-bs-toggle="modal" data-bs-target="#newsViewModal">
+                            <img :src="newsItem.image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ newsItem.name }}</h5>
+                                <p class="card-text">{{ newsItem.shortDescription }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Modal artigos -->
+                <div class="modal fade" id="newsViewModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="newsViewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <div class="modal-body mt-5" >
+
+                                <div class="row">
+                                    <img :src="newsSelected.image" class="card-img-top" alt="..." style="height: 50vh;">
+                                </div>
+                                <div class="news-content">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2>
+                                                {{ newsSelected.name }}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <p v-html="newsSelected.description"> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- contato-->
+        <section class="page-section bg-primary" id="contato">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-white text-center mt-0">Contato</h2>
+                <hr class="divider divider-light" />
+                <div class="row text-white">
+                    <div class="col-12 col-md-4 text-center mb-3">
                         <i class="bi bi-envelope fs-3"></i>
                         <a href="mailto:contado@w2blaw.com.br" class="contact-link">contado@w2blaw.com.br</a>
                     </div>
 
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4 text-center mb-3">
                         <i class="bi bi-whatsapp fs-3"></i>
-                        <a href="tel:+555199399-3643" class="contact-link">(51) 99399-3643</a>
+                        <a target="_blank" href="https://wa.me/5551993993643?text=Ola%20gostaria%20marcar%20uma%20consultoria" class="contact-link">(51) 99399-3643</a>
                     </div>                    
                  
-                    <div class="col-12 col-md-4 text-dark">
+                    <div class="col-12 col-md-4 text-center mb-3">
                         <i class="bi bi-instagram fs-3"></i>
                         <a target="_blank" href="https://www.instagram.com/w2blaw/" class="contact-link">@w2blaw</a>
                     </div>
@@ -197,7 +294,7 @@
             </div>
         </footer>
         <a 
-            href="https://wa.me/555199399-3643?text=Ola%20gostaria%20marcar%20uma%20consultoria" 
+            href="https://wa.me/5551993993643?text=Ola%20gostaria%20marcar%20uma%20consultoria" 
             class="whatsapp-float" 
             target="_blank"
         >
@@ -209,8 +306,244 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <!-- vue -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script>
+            new Vue({
+                el: '#equipe',
+                data() {
+                    return {
+                        team: [
+                            {
+                                name: 'Pedro Webber',
+                                job: 'Advogado',
+                                description: `
+                                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse 
+                                    auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
+                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim 
+                                    elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
+                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis 
+                                    placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
+                                    nibh quis turpis suscipit, at sagittis tellus dignissim.
+                                    Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
+                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. 
+                                    Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
+                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, 
+                                    ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
+                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius 
+                                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
+                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget 
+                                    diam blandit blandit.
+                                `,
+                                shortDescription: 'Lorem ipsum',
+                                image: './assets/img/avatar.jpg',
+                                previous: 2, 
+                                next: 1, 
+                            },
+                            {
+                                name: 'Romano',
+                                job: 'Marketing',
+                                description: `
+                                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse 
+                                    auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
+                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim 
+                                    elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
+                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis 
+                                    placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
+                                    nibh quis turpis suscipit, at sagittis tellus dignissim.
+                                    Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
+                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. 
+                                    Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
+                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, 
+                                    ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
+                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius 
+                                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
+                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget 
+                                    diam blandit blandit.
+                                `,
+                                shortDescription: 'Lorem ipsum',
+                                image: './assets/img/avatar.jpg',
+                                previous: 0, 
+                                next: 2,
+                            },
+                            {
+                                name: 'Eduardo Souza',
+                                job: 'Desenvolvedor de Sistemas',
+                                description: `
+                                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse 
+                                    auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
+                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim 
+                                    elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
+                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis 
+                                    placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
+                                    nibh quis turpis suscipit, at sagittis tellus dignissim.
+                                    Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
+                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. 
+                                    Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
+                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, 
+                                    ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
+                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius 
+                                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
+                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget 
+                                    diam blandit blandit.
+                                `,
+                                shortDescription: 'Lorem ipsum',
+                                image: './assets/img/avatar.jpg',
+                                previous: 1, 
+                                next: 0,
+                            }
+                        ],
+                        professionalSelected: null,
+                    }
+                },
+                created(){
+                    this.professionalSelected =  this.team[0];
+                },
+                methods: {
+                    setProfessional(index){
+                        $('#professionalContent').fadeOut();
+                        setTimeout(() => {
+                            $('#professionalContent').fadeIn(1500);
+                            this.professionalSelected = this.team[index];
+                        }, "300")
+                    }
+                },
+            });
+           
+            new Vue({
+                el: '#artigos',
+                data() {
+                    return {
+                        news: [
+                            {
+                                name: 'Como Preparar minha empresa para a reforma tributária',
+                                description: `
+                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
+                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
+                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
+                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
+                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
+                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
+                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
+                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
+                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
+                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
+                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
+                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
+                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
+                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
+                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
+                                    <p>diam blandit blandit.</p>
+                                `,
+                                shortDescription: `Quando se fala em reforma tributária no Brasil, políticos, empresários e a população em geral ficam apreensivos.`,
+                                image: './assets/img/artigos/image-1.jpg',
+                            },
+                            {
+                                name: 'AUMENTO DAS ALÍQUOTAS DE PIS E COFINS: ',
+                                description: `
+                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
+                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
+                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
+                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
+                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
+                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
+                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
+                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
+                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
+                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
+                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
+                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
+                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
+                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
+                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
+                                    <p>diam blandit blandit.</p>
+                                `,
+                                shortDescription: `No final de 2022 foi promulgado o Decreto nº 11.322/22, que reduziu de forma ...`,
+                                image: './assets/img/artigos/image-2.jpg',
+                            },
+                            {
+                                name: '5 MUDANÇAS DA REFORMA TRIBUTÁRIA QUE DEVEM IMPACTAR OS EMPRESÁRIOS ',
+                                description: `
+                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
+                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
+                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
+                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
+                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
+                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
+                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
+                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
+                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
+                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
+                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
+                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
+                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
+                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
+                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
+                                    <p>diam blandit blandit.</p>
+                                `,
+                                shortDescription: `Confira 5 mudanças da reforma tributária que podem impactar as atividades empresariais.`,
+                                image: './assets/img/artigos/image-3.jpg',
+                            },
+                            {
+                                name: '5 MUDANÇAS DA REFORMA TRIBUTÁRIA QUE DEVEM IMPACTAR OS EMPRESÁRIOS ',
+                                description: `
+                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
+                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
+                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
+                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
+                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
+                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
+                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
+                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
+                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
+                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
+                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
+                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
+                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
+                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
+                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
+                                    <p>diam blandit blandit.</p>
+                                `,
+                                shortDescription: `Confira 5 mudanças da reforma tributária que podem impactar as atividades empresariais.`,
+                                image: './assets/img/artigos/image-3.jpg',
+                            },
+                        ],
+                        newsSelected: null,
+                    }
+                },
+                created(){
+                    this.newsSelected =  this.news[0];
+                },
+                methods: {
+                    setNews(index){
+                        this.newsSelected = this.news[index];
+                    }
+                },
+            });
+        
+            $(".arrow-icon").hover(
+
+                function(){
+                    $(this).parent().css("background", "rgb(122 122 123 / 36%)");
+                }
+                ,
+                function(){
+                    $(this).parent().css("background", "none");
+                }
+
+            );
+        </script>
      
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
 <!-- https://icons8.com/icons/set/bootstrap -->

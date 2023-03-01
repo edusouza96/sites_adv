@@ -4521,7 +4521,6 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
 }
 .card > hr {
   margin-right: 0;
@@ -4613,18 +4612,6 @@ textarea.form-control-lg {
 .card-img-top,
 .card-img-bottom {
   width: 100%;
-}
-
-.card-img,
-.card-img-top {
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
-}
-
-.card-img,
-.card-img-bottom {
-  border-bottom-right-radius: calc(0.25rem - 1px);
-  border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
 .card-group > .card {
@@ -11412,11 +11399,8 @@ header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;
 }
 header.masthead .description {
-  background: rgba(0 0, 0, 0.2);
-  padding: 3em 2em;
-  border-radius: 4px;
+  margin-top: 5em;
   color: #d1d1d1;
-  /* box-shadow: 1px 1px 1em #000; */
 }
 @media (min-width: 992px) {
   header.masthead {
@@ -11500,10 +11484,11 @@ header.masthead .description {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-size: cover;
+  background-size: contain;
   height: 20em;
   border-radius: 5px;
   margin: auto;
+  background-color: #fff;
 }
 .img-me{
   background-image: url("../assets/img/me.jpg");
@@ -11558,7 +11543,7 @@ header.masthead .description {
 }
 
 #contact a {
-  color: #000;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -11583,5 +11568,36 @@ header.masthead .description {
 
 .contact-link, .contact-link:hover{
   text-decoration: none;
-  color: #000;
+  color: #fff;
+}
+
+.card-team, .card-news {
+  width: 18rem;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  margin: 1em auto;
+  cursor: pointer;
+}
+
+.card-team > .card-body, .card-news > .card-body {
+  background-color: #f3f4f5;
+}
+
+.arrow-icon {
+  width: 3em; 
+  height: 27em;
+  padding: 10em 0;
+  cursor: pointer;
+}
+
+.news-content {
+  margin-top: -15vh;
+  margin-left: 6vw;
+  margin-right: 6vw;
+  background-color: #ffffff;
+  z-index: 10;
+  position: relative;
+  padding: 2em;
+}
+[v-cloak] {
+  display: none;
 }

@@ -11583,8 +11583,8 @@ header.masthead .description {
 }
 
 .arrow-icon {
-  width: 3em; 
-  height: 27em;
+  width: 3vw; 
+  height: 48vh;
   padding: 10em 0;
   cursor: pointer;
 }

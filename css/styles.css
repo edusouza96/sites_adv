@@ -11501,8 +11501,8 @@ header.masthead .description {
   border-radius: 100%;
   margin: auto;
 }
-.icon-trabalho {
-  background-image: url("../assets/img/icons/trabalho_.png");
+.icon-digital {
+  background-image: url("../assets/img/icons/digital.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -11511,8 +11511,8 @@ header.masthead .description {
   width: 4em;
   margin: auto;
 }
-.icon-civil {
-  background-image: url("../assets/img/icons/civil_.png");
+.icon-cibernetico {
+  background-image: url("../assets/img/icons/cibernetico.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -11531,8 +11531,8 @@ header.masthead .description {
   width: 4em;
   margin: auto;
 }
-.icon-familia {
-  background-image: url("../assets/img/icons/familia_.png");
+.icon-tributario {
+  background-image: url("../assets/img/icons/tributario.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -11553,8 +11553,8 @@ header.masthead .description {
 
 .whatsapp-float, .whatsapp-float:hover{
   position:fixed;
-  width:60px;
-  height:60px;
+  width:75px;
+  height:75px;
   bottom:40px;
   right:40px;
   background-color:#25d366;

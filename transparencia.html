@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <p>
+            atividade,cargo,cpf,cpfInstPensao,cpfRepresentanteLegal,funcao,idComFlagExisteDetalhamentoServidor,licenca,matricula,nome,nomeInstPensao,nomeRepresentanteLegal,numRanking,orgaoServidorExercicio,orgaoServidorLotacao,orgaoSuperiorServidorExercicio,orgaoSuperiorServidorLotacao,quantidade,situacao,tipo,unidadeOrganizacionalServidorExercicio,unidadeOrganizacionalServidorLotacao<br>
+        </p>
+        <p v-for="item in dados">
+            {{item.atividade}},{{item.cargo}},{{item.cpf}},{{item.cpfInstPensao}},{{item.cpfRepresentanteLegal}},{{item.funcao}},{{item.idComFlagExisteDetalhamentoServidor}},{{item.licenca}},{{item.matricula}},{{item.nome}},{{item.nomeInstPensao}},{{item.nomeRepresentanteLegal}},{{item.numRanking}},{{item.orgaoServidorExercicio}},{{item.orgaoServidorLotacao}},{{item.orgaoSuperiorServidorExercicio}},{{item.orgaoSuperiorServidorLotacao}},{{item.quantidade}},{{item.situacao}},{{item.tipo}},{{item.unidadeOrganizacionalServidorExercicio}},{{item.unidadeOrganizacionalServidorLotacao}}<br>
+        </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dados: []
+                }
+            },
+            created(){
+                $.get('https://portaldatransparencia.gov.br/servidores/consulta/resultado?paginacaoSimples=false&tamanhoPagina=100&offset=0&direcaoOrdenacao=asc&colunaOrdenacao=nome&orgaosServidorLotacao=OR21300&situacao=2%2C1&colunasSelecionadas=detalhar%2Ctipo%2Ccpf%2Cnome%2CorgaoServidorLotacao%2Cmatricula%2Csituacao%2Cfuncao%2Ccargo%2Cquantidade&t=Yai9K2pWEkN9881gBCjp&_=1678209379948')
+                    .done(function(resposta){
+                        this.dasdos = resposta.data;
+                    }.bind(this));
+            }
+        })
+    </script>
+</body>
+</html>

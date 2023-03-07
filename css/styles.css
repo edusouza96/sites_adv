@@ -11581,6 +11581,15 @@ header.masthead .description {
 .card-team > .card-body, .card-news > .card-body {
   background-color: #f3f4f5;
 }
+.card-team > img {
+  height: 35vh;
+  object-fit: cover;
+  object-position: right top;
+}
+
+.card-news {
+  height: 100%;
+}
 
 .arrow-icon {
   width: 3vw; 

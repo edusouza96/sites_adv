@@ -37,7 +37,7 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#o_que_somos">O que somos?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#quem_somos">Quem somos?</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#o_que_trabalhamos">O que trabalhamos?</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#no_que_trabalhamos">No que trabalhamos?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#voce_sabia">Você sabia?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#fale_conoso">Fale Conosco</a></li>
                     </ul>
@@ -54,7 +54,7 @@
                         </h1>
                         <div class="description">
                             <p>Se sua vida já é digital, seu escritório de advocacia também deve ser.</p>
-                            <p>Usamos a tecnologia para evitar problemas e salvando seu tempo e seu dinheiro.</p>
+                            <p>Usamos a tecnologia para evitar problemas, salvando seu tempo e seu dinheiro.</p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ professional.name }}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{ professional.job }}</h6>
-                                <p class="card-text">{{ professional.shortDescription }}</p>
                             </div>
                         </div>
                     </div>
@@ -154,28 +153,21 @@
 
                                     <div class="col-10" id="professionalContent">
                                         <div class="row">
-                                            <div class="col-8">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <h3>{{ professionalSelected.name }}</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 text-muted">
-                                                        <h5>{{ professionalSelected.job }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 text-end">
-                                                <img :src="professionalSelected.image" style="height: 10vh;">
+                                            <div class="col-12">
+                                                <h3>{{ professionalSelected.name }}</h3>
                                             </div>
                                         </div>
-                                       
-                                        <div class="row mt-3">
-                                            <div class="col-12">
-                                                <p>
-                                                    {{ professionalSelected.description }}
-                                                </p>
+                                        <div class="row">
+                                            <div class="col-12 text-muted">
+                                                <h5>{{ professionalSelected.job }}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-4 text-start mb-3">
+                                                <img :src="professionalSelected.image" style="width: 100%;"> 
+                                            </div>
+                                            <div class="col-12 col-md-8">
+                                                <div v-html="professionalSelected.description"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -191,10 +183,10 @@
             </div>
         </section>
    
-        <!-- o_que_trabalhamos-->
-        <section class="page-section bg-primary" id="o_que_trabalhamos">
+        <!-- no_que_trabalhamos-->
+        <section class="page-section bg-primary" id="no_que_trabalhamos">
             <div class="container px-4 px-lg-5">
-                <h2 class="text-white text-center mt-0">O que trabalhamos?</h2>
+                <h2 class="text-white text-center mt-0">No que trabalhamos?</h2>
                 <hr class="divider divider-light" />
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-3 col-md-6 text-center">
@@ -237,11 +229,11 @@
 
                 <div class="row d-flex flex-wrap">
                     <div class="col-md-6 col-12 col-lg-4" v-for="(newsItem, index) in news" :key="index">
-                        <div class="card card-team" @click="newsSelected = news[index]" data-bs-toggle="modal" data-bs-target="#newsViewModal">
+                        <div class="card card-news" @click="newsSelected = news[index]" data-bs-toggle="modal" data-bs-target="#newsViewModal">
                             <img :src="newsItem.image" class="card-img-top" style="height: 196px">
                             <div class="card-body">
                                 <h5 class="card-title">{{ newsItem.name }}</h5>
-                                <p class="card-text">{{ newsItem.shortDescription }}</p>
+                                <p class="card-text text-muted">{{ newsItem.shortDescription }}</p>
                             </div>
                         </div>
                     </div>
@@ -287,44 +279,51 @@
                 <h2 class="text-white text-center mt-0">Fale Conosco</h2>
                 <hr class="divider divider-light" />
                 <div class="row text-white">
-                    <div class="col-12 col-md-7">
+                    <div class="col-12 col-md-4">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4890.390482180794!2d-51.18845940715728!3d-29.921088237592244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95197b747e281229%3A0x5f7f44c6b7f655cc!2sW2B%20Law!5e0!3m2!1spt-BR!2sbr!4v1678204499629!5m2!1spt-BR!2sbr" 
-                            style="border:none;max-width: 100%;width: 100%;height: 50vh;" 
+                            style="border:none;max-width: 100%;width: 100%;height: 20vh;" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade"
                         ></iframe>
                     </div>
 
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-4">
                         <div class="col-12">
-                            <i class="bi bi-pin-map fs-3"></i>
+                            <h4 class="mt-3">Mundo Real</h4>
+                        </div>
+                        <div class="col-12">
+                            <i class="bi bi-pin-map fs-4"></i>
                             <a href="https://goo.gl/maps/CHqPLSewt4KVgqqy7" target="_blank" class="contact-link">Rua Lenine Nequete, 77 - Torre B, Sala 704 - Centro, Canoas/RS</a>
                         </div>                
                        
                         <div class="col-12">
                             <i class="bi bi-envelope fs-3"></i>
-                            <a href="mailto:contado@w2blaw.com.br" class="contact-link">contado@w2blaw.com.br</a>
-                        </div>                
-                       
-                        <div class="col-12">
-                            <i class="bi bi-whatsapp fs-3"></i>
-                            <a target="_blank" href="https://wa.me/5551991678980?text=Ol%C3%A1.%20Encontrei%20o%20site%20do%20W2B%20Law%20e%20gostaria%20de%20entrar%20em%20contato" class="contact-link">(51) 99167-8980</a>
-                        </div>                    
+                            <a href="mailto:contato@w2blaw.com.br" class="contact-link">contato@w2blaw.com.br</a>
+                        </div>                                
                      
                         <div class="col-12">
                             <i class="bi bi-telephone fs-3"></i>
                             <a target="_blank" href="+555137851502" class="contact-link">(51) 3785-1502</a>
                         </div>    
     
+                    </div>
+                    <div class="col-12 col-md-4">
                         <div class="col-12">
-                            <i class="bi bi-linkedin fs-3"></i>
-                            <a target="_blank" href="https://linkedin.com/company/w2blaw" class="contact-link">company/w2blaw</a>
+                            <h4 class="mt-3">Mundo Virtual</h4>
                         </div>
-                        
+                        <div class="col-12">
+                            <i class="bi bi-whatsapp fs-3"></i>
+                            <a target="_blank" href="https://wa.me/5551991678980?text=Ol%C3%A1.%20Encontrei%20o%20site%20do%20W2B%20Law%20e%20gostaria%20de%20entrar%20em%20contato" class="contact-link">(51) 99167-8980</a>
+                        </div> 
                         <div class="col-12">
                             <i class="bi bi-instagram fs-3"></i>
                             <a target="_blank" href="https://www.instagram.com/w2blaw/" class="contact-link">@w2blaw</a>
+                        </div>
+
+                        <div class="col-12">
+                            <i class="bi bi-linkedin fs-3"></i>
+                            <a target="_blank" href="https://linkedin.com/company/w2blaw" class="contact-link">company/w2blaw</a>
                         </div>
                     </div>
                 </div>
@@ -367,16 +366,16 @@
                                 name: 'Pedro Webber',
                                 job: 'Advogado',
                                 description: `
-                                    Advogado laureado pela Pontifícia Universidade Católica do Rio Grande do Sul. 
-                                    Possui formação em Ciência da Computação pela mesma Universidade, 
+                                    <p>Advogado laureado pela Pontifícia Universidade Católica do Rio Grande do Sul. </p>
+                                    <p>Possui formação em Ciência da Computação pela mesma Universidade, 
                                     com mais de uma década de experiência em Tecnologia da Informação. 
                                     Além disso, possui formação de Mercado de Capitais pelo 
                                     Center for M&A Studies da Universidade de São Paulo, 
                                     Certificação Profissional Anbima - Associação Brasileira das 
-                                    Entidades dos Mercados Financeiros e de Capitais e LGPD pelo LegalHub
+                                    Entidades dos Mercados Financeiros e de Capitais e LGPD pelo LegalHub.</p>
                                 `,
-                                shortDescription: 'Lorem ipsum',
-                                image: './assets/img/avatar.jpg',
+                                shortDescription: '',
+                                image: './assets/img/profissionais/pedro.jpeg',
                                 previous: 3, 
                                 next: 1, 
                             },
@@ -384,37 +383,25 @@
                                 name: 'Rodrigo Alves Fernandes',
                                 job: 'Advogado',
                                 description: `
-                                    Advogado formado pela Pontifícia Universidade Católica do Rio Grande do Sul. 
+                                    <p>Advogado formado pela Pontifícia Universidade Católica do Rio Grande do Sul. </p>
                                 `,
-                                shortDescription: 'Lorem ipsum',
-                                image: './assets/img/avatar.jpg',
+                                shortDescription: '',
+                                image: './assets/img/profissionais/rodrigo.jpeg',
                                 previous: 0, 
                                 next: 2, 
                             },
                             {
-                                name: 'Romano',
-                                job: 'Marketing',
+                                name: 'Jeferson Romano',
+                                job: 'Gestor de Inovação',
                                 description: `
-                                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse 
-                                    auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
-                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim 
-                                    elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
-                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis 
-                                    placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
-                                    nibh quis turpis suscipit, at sagittis tellus dignissim.
-                                    Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
-                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. 
-                                    Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
-                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, 
-                                    ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
-                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius 
-                                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
-                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget 
-                                    diam blandit blandit.
+                                    <p>Formado em Administração com ênfase em Gestão para Inovação e Liderança pela Universidade do Vale do Rio do Sinos.</p> 
+                                    <p>
+                                        Experiência de mais de meia década em Marketing e Inovação Digital, atuando em consultoria de pequenas e grandes
+                                        empresas como estrategista digital, com experiência internacional nos mercados português e espanhol.
+                                    </p>
                                 `,
-                                shortDescription: 'Lorem ipsum',
-                                image: './assets/img/avatar.jpg',
+                                shortDescription: '',
+                                image: './assets/img/profissionais/jeferson.jpg',
                                 previous: 1, 
                                 next: 3,
                             },
@@ -422,26 +409,13 @@
                                 name: 'Eduardo Souza',
                                 job: 'Analista de Sistemas',
                                 description: `
-                                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse 
-                                    auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
-                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim 
-                                    elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
-                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis 
-                                    placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
-                                    nibh quis turpis suscipit, at sagittis tellus dignissim.
-                                    Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
-                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. 
-                                    Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
-                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, 
-                                    ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
-                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius 
-                                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
-                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget 
-                                    diam blandit blandit.
+                                    <p>Analista de Desenvolvimento de sistemas, formado pelo Centro Universitário SENAC-RS.</p>
+                                    <p>Possui também especialização em Governança TI.</p>
+                                    <p>Com 10 anos de experiência em análise e desenvolvimento de sistemas, com ênfase em sistemas para internet.</p>
+                                    <img src="./assets/img/profissionais/sfpc.png">
                                 `,
-                                shortDescription: 'Lorem ipsum',
-                                image: './assets/img/avatar.jpg',
+                                shortDescription: '',
+                                image: './assets/img/profissionais/eduardo.jpg',
                                 previous: 2, 
                                 next: 0,
                             }
@@ -469,99 +443,167 @@
                     return {
                         news: [
                             {
-                                name: 'Como Preparar minha empresa para a reforma tributária',
+                                name: 'Exclusão do ISS da Base de Cálculo do PIS e da COFINS',
                                 description: `
-                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
-                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
-                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
-                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
-                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
-                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
-                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
-                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
-                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
-                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
-                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
-                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
-                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
-                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
-                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
-                                    <p>diam blandit blandit.</p>
+                                    <div class="blog-post-content">
+                                        <h2 class="has-medium-font-size"><strong>Breve síntese sobre exclusão do ICMS da Base de Cálculo do PIS e da
+                                                COFINS</strong></h2>
+                                        <p>A discussão acerca da exclusão do Imposto sobre Serviços (ISS) da base de cálculo das Contribuições ao PIS e a
+                                            COFINS aguarda julgamento pelo Supremo Tribunal Federal (STF) e continua sendo uma tese muito vantajosa e de
+                                            grande impacto aos contribuintes.</p>
+                                        <p>Como se sabe, em 15 de março de 2017 o STF julgou o Recurso Extraordinário nº 574.706 – Tema de Repercussão Geral
+                                            nº 69 e definiu que o ICMS, por não integrar o faturamento, deveria ser excluído da base de cálculo do PIS e da
+                                            COFINS. Deve-se lembrar que, após o julgamento do recurso, o STF julgou os Embargos de Declaração, em 13/05/2021
+                                            e estabeleceu que o ICMS a ser excluído era o destacado na nota fiscal, bem como <strong>modulou os efeitos da
+                                                decisão</strong> para a partir de 15/03/2017.</p>
+                                        <h2 class="has-medium-font-size"><strong>O que é modulação de efeitos?</strong></h2>
+                                        <p>A <strong>modulação de efeitos</strong> pode ser entendida como um instituto pelo qual o STF limita a eficácia
+                                            temporal de suas decisões, atribuindo a estas efeitos exclusivamente para o futuro. Em outras palavras, a
+                                            decisão vale apenas para frente. Nesse contexto, contribuintes que ajuizaram ações após a data definida pelo STF
+                                            (15/03/2017), não poderiam recuperar os valores indevidamente pagos nos anos anteriores a essa data.</p>
+                                        <p>Contudo, deve-se ressaltar que a modulação de efeitos tem sido aplicada <strong>com a ressalva às ações ajuizadas
+                                                anteriormente ao início do julgamento pelo STF</strong>, <strong><u>e cujos efeitos ficam resguardados</u>.
+                                            </strong>Nesse cenário,<strong> <u>os contribuintes que ajuizaram ações antes do início do julgamento puderam
+                                                    recuperar os últimos 05 anos de valores relativos a ICMS na vase de cálculo das
+                                                    contribuições</u></strong>. No entanto, deve-se ressaltar que esses critérios de ressalvas à modulação,
+                                            bem como os marcos temporais, não são uniformes e variam de acordo com a convicção dos Ministros.</p>
+                                        <p></p>
+                                        <h2 class="has-medium-font-size"><strong>A exclusão do ISS da base de cálculo do PIS e da COFINS</strong></h2>
+                                        <p>A tese da exclusão do ISS segue a mesma lógica da exclusão do ICMS, sendo, inclusive, designada como uma “tese
+                                            filhote”. Isso porque, assim como o ICMS, o ISS não compõe o faturamento das empresas, já que somente transita
+                                            pela empresa, mas tem como destinatário a Fazenda.</p>
+                                        <p>A questão aguarda definição pelo STF, no Recurso Extraordinário nº 592.616 – Tema de Repercussão Geral nº 118, o
+                                            qual não tem previsão para ser julgado.</p>
+                                        <p>Alguns contribuintes têm obtido sentenças favoráveis no Rio Grande do Sul, Santa Catarina e Paraná, como é o caso
+                                            dos processos nº 5060130-24.2021.4.04.7100/RS, 501390870.2022.4.04.7000/PR,5062026-05.2021.4.04.7100/RS,
+                                            500160412.2022.4.04.7009/P R,5000164-29.2018.4.04.7200/SC, 5058312-46.2021.4.04.7000/PR, 501562521.2021.4.04.
+                                            7205/SC.</p>
+                                        <p>Contudo, no Tribunal Federal da 4º Região não há uma definição sobre o tema, tendo em vista que a questão, como
+                                            já referido, está pendente de julgamento no STF.</p>
+                                        <p>Diante desse cenário jurisprudencial e de que o julgamento ainda não foi iniciado no STF, recomenda-se que os
+                                            contribuintes <strong><u>avaliem o ajuizamento de suas ações antes do início do julgamento pelo STF,
+                                                </u></strong>tendo em vista as ressalvas feitas pelo STF na modulação dos efeitos. O ajuizamento preventivo
+                                            <strong><u>poderá garantir integralmente o direito do contribuinte</u></strong>, como, por exemplo, <strong><u>o
+                                                    direito à compensação dos tributos indevidamente pagos nos 05 anos anteriores ao ajuizamento de sua
+                                                    ação, sem a restrição temporal imposta pela modulação dos efeitos</u></strong>.
+                                        </p>
+                                        <p>Caso você seja contribuinte optante pelo lucro presumido ou lucro real, entre em contato com nossa equipe para
+                                            lhe auxiliarmos e verificarmos a possibilidade de ajuizamento de ação para excluir o ISS da base de cálculo das
+                                            contribuições.</p>
+                                    </div>
                                 `,
-                                shortDescription: `Quando se fala em reforma tributária no Brasil, políticos, empresários e a população em geral ficam apreensivos.`,
+                                shortDescription: `Breve síntese sobre exclusão do ICMS da Base de Cálculo do PIS e da COFINS A discussão acerca da exclusão do Imposto sobre Serviços(...)`,
                                 image: './assets/img/artigos/image-1.jpg',
                             },
                             {
-                                name: 'AUMENTO DAS ALÍQUOTAS DE PIS E COFINS: ',
+                                name: 'PERSE possibilita que Bares e Restaurantes não paguem tributos federais por 60 meses.',
                                 description: `
-                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
-                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
-                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
-                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
-                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
-                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
-                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
-                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
-                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
-                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
-                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
-                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
-                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
-                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
-                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
-                                    <p>diam blandit blandit.</p>
+                                    <div class="blog-post-content">
+                                        <p><strong>A Lei Perse</strong></p>
+                                        <p>A lei que instituiu o Programa Emergencial de Retomada do Setor de Eventos (Perse) e o Programa de Garantia aos
+                                            Setores Críticos (PGSC), denominada “Lei Perse”, traz, em seu art. 4º, a redução a 0% da alíquota de tributos
+                                            federais (IRPJ, CSLL, PIS E COFINS), pelo prazo de 60 meses, para as empresas contempladas pela Lei. Em outras
+                                            palavras, empresas beneficiadas não precisarão pagar os tributos federais por 05 anos.</p>
+                                       
+                                        <p><strong>Bares e restaurantes estão entre os ramos beneficiados pela Lei</strong></p>
+                                        <p>Em relação às empresas que fazem jus ao benefício do Perse, o art. 2, §1º dispõe que para os efeitos da lei
+                                            consideram-se pertencentes ao setor de eventos as empresas que exerçam, direta ou indiretamente, diversas
+                                            atividades, dentre as quais está a prestação de serviços turísticos, conforme o&nbsp;art. 21 da Lei nº 11.771,
+                                            de 17 de setembro de 2008.</p>
+                                        <p>O art. 21 da Lei 11.171/2008 “Lei do Turismo” estabelece o que se entende por “prestação de serviços turísticos”,
+                                            dispondo o seguinte:</p>
+                                        <p>“consideram-se prestadores de serviços turísticos, para os fins desta Lei, as sociedades empresárias, sociedades
+                                            simples, os empresários individuais e os serviços sociais autônomos que prestem serviços turísticos remunerados
+                                            e que exerçam as seguintes atividades econômicas relacionadas à cadeia produtiva do turismo:</p>
+                                        <p>I&nbsp;–&nbsp;meios de hospedagem;</p>
+                                        <p>II&nbsp;–&nbsp;agências de turismo;</p>
+                                        <p>III&nbsp;–&nbsp;transportadoras turísticas;</p>
+                                        <p>IV&nbsp;–&nbsp;organizadoras de eventos;</p>
+                                        <p>V&nbsp;–&nbsp;parques temáticos; e</p>
+                                        <p>VI&nbsp;–&nbsp;acampamentos turísticos”</p>
+                                        <p>Ainda, o parágrafo único desse artigo estabelece um rol de serviços prestados por sociedades empresárias que
+                                            <strong><u>poderão</u></strong> ser cadastradas no Ministério do Turismo, atendidas determinadas condições,
+                                            dentre as quais estão, no inciso I, <strong><u>restaurantes, cafeterias, bares e similares.</u></strong>
+                                        </p>
+                                        <p>Diante desse quadro, verifica-se que os contribuintes que prestarem estes serviços têm direito ao benefício
+                                            fiscal.</p>
+                                        <p></p>
+                                        <h2 class="has-medium-font-size"><strong>Portaria ME nº 7.163/2021 esclarece CNAE´s contemplados no PERSE</strong>
+                                        </h2>
+                                        <p>Para esclarecer as atividades contempladas pela lei, o §2º do art. 2º da Lei 14.148/2021 determinou que caberia a
+                                            ato do Ministério da Economia publicar os Códigos da Classificação de Atividades Econômicas (CNAE) que se
+                                            enquadram na definição de setor de eventos.</p>
+                                        <p>Assim, em 21/06/2021, foi publicada a Portaria ME nº 7.163/2021, que trouxe dois anexos com os CNAE´s
+                                            considerados como do setor de eventos.</p>
+                                        <p>No anexo I, a portaria listou os códigos CNAE que se enquadram nos incisos I, II e III do § 1º do art. 2º da Lei
+                                            Perse. Já no anexo II, foram elencados os CNAE que se enquadram no inciso IV,&nbsp;<strong><u>quando
+                                                    considerados prestadores de serviços turísticos de acordo com o art. 21 da Lei do Turismo</u></strong>.
+                                        </p>
+                                        <p>Ocorre que para as atividades listadas no anexo II, <strong><u>dentre as quais estão as atividades de
+                                                    restaurantes, bares e cafeterias</u></strong>, a portaria estabeleceu uma restrição de que estas só
+                                            poderão ser enquadradas no Perse&nbsp;<strong>desde que, na data da publicação da Lei Perse (03/05/2021),
+                                                tivessem cadastro regular no Cadastur (cadastro no Ministério do Turismo).</strong></p>
+                                        <p>Contudo, essa restrição ao benefício criada pela Portaria não está disposta na Lei Perse, o que tem levado os
+                                            contribuintes a questionarem tal restrição no Poder Judiciário, com a alegação de violação à legalidade
+                                            tributária.</p>
+                                        <p>Além disso, com relação a bares, cafeterias restaurantes, o cadastro no Cadastur é
+                                            <strong><u>facultativo</u></strong>, conforme dispõe parágrafo único do art. 21 da Lei 11.171/2008 ao afirmar
+                                            que “<strong><u>poderão ser cadastradas no Ministério do Turismo</u></strong>”. Dessa forma, a Portaria não pode
+                                            exigir um cadastro, que sequer é exigido por lei, como requisito para aproveitamento do benefício fiscal.
+                                        </p>
+                                        <h2 class="has-medium-font-size">Ação judicial para garantir o benefício do Perse</h2>
+                                        <p>No judiciário, alguns contribuintes têm obtido decisões favoráveis, em primeiro e segundo grau, no Tribunal
+                                            Regional Federal da 4º Região, como é o caso dos seguintes processos 02790304.2022.4.04.0000,
+                                            5029831-87.2022.4.04.0000, 5029966-51.2022.4.04.7000 e 5032867-40.2022.4.04.0000. Em todos eles a decisão foi no
+                                            sentido de que a empresa poderia se aproveitar do benefício mesmo não tendo o cadastro no Cadastur.</p>
+                                        <p>Nesse contexto, tendo em vista que restaurantes, bares, cafeterias e similares são considerados como prestadores
+                                            de serviços turísticos e que as restrições impostas pela Portaria do Ministério da Economia são indevidas,
+                                            recomenda-se que os contribuintes ajuízem suas ações para garantir a fruição do benefício.</p>
+                                        <p>Se você é prestador de algum desses serviços e quer garantir tributos federais zerados pelos próximos 60 meses,
+                                            entre em contato como nossa equipe para que possamos garantir o seu direito de forma ágil e eficiente. &nbsp;
+                                        </p>
+                                    </div>
                                 `,
-                                shortDescription: `No final de 2022 foi promulgado o Decreto nº 11.322/22, que reduziu de forma ...`,
+                                shortDescription: `A Lei Perse A lei que instituiu o Programa Emergencial de Retomada do Setor de Eventos (Perse) e o Programa de Garantia aos Setores(...)`,
                                 image: './assets/img/artigos/image-2.jpg',
                             },
                             {
-                                name: '5 MUDANÇAS DA REFORMA TRIBUTÁRIA QUE DEVEM IMPACTAR OS EMPRESÁRIOS ',
+                                name: 'STJ decide que base de cálculo do ITBI é o valor de venda do imóvel e não o valor de avaliação atribuído pelos Municípios',
                                 description: `
-                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
-                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
-                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
-                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
-                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
-                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
-                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
-                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
-                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
-                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
-                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
-                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
-                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
-                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
-                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
-                                    <p>diam blandit blandit.</p>
+                                    <div class="blog-post-content">
+
+                                        <p>O Superior Tribunal de Justiça, ao realizar o julgamento do Tema 1.113 dos Recursos Repetitivos estabeleceu três
+                                            teses que são de extrema relevância para os contribuintes que pagaram o ITBI nas operações de compra e venda de
+                                            imóveis.</p>
+                                        <p>As teses formadas foram as seguintes:</p>
+                                        <ol type="1">
+                                            <li>A base de cálculo do ITBI é o valor do imóvel transmitido em condições normais de mercado, não estando
+                                                vinculada à base de cálculo do IPTU, que nem sequer pode ser utilizada como piso de tributação</li>
+                                            <li>O valor da transação declarado pelo contribuinte goza da presunção de que é condizente com o valor de
+                                                mercado, que somente pode ser afastada pelo fisco mediante a regular instauração de processo administrativo
+                                                próprio (artigo 148 do Código Tributário Nacional – CTN);</li>
+                                            <li>O município não pode arbitrar previamente a base de cálculo do ITBI com respaldo em valor de referência por
+                                                ele estabelecido de forma unilateral.</li>
+                                        </ol>
+                                        <p>De forma mais clara, o que essas teses dizem é que <strong>a base de cálculo do ITBI deve corresponder ao valor
+                                                negociado pelas partes, que pode ser desconsiderado apenas mediante processo administrativo, de forma que o
+                                                Município não pode estabelecer de forma unilateral uma base de cálculo prévia ou vincular a base de cálculo
+                                                do ITBI à base de cálculo do IPTU.</strong></p>
+                                        <p></p>
+                                        <p>A relevância dessa decisão é significativa, tendo em vista que a <strong>grande parte dos contribuintes, quando
+                                                vão comprar um imóvel, acabam pagando o ITBI sobre o valor arbitrado pelo Munícipio e não o valor
+                                                negociado.</strong></p>
+                                        <p>Com a decisão do STJ, os contribuintes que pagaram o ITBI sobre valor maior (atribuído pelo Município) nos
+                                            últimos 05 anos <strong>podem recuperar a diferença de imposto paga a mais</strong>.</p>
+                                        <p>Para melhor entendimento, elaboramos a ilustração a seguir que exemplifica um caso no qual as partes realizaram
+                                            um contrato de compra e venda de imóvel pelo valor de R$ 200.000,00 (duzentos mil reais):</p>
+                                        <figure class="wp-block-image size-full"><img decoding="async" width="886" height="483"
+                                                src="https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image.png" alt="" class="wp-image-549"
+                                                srcset="https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image.png 886w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-300x164.png 300w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-768x419.png 768w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-600x327.png 600w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-183x100.png 183w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-260x142.png 260w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-468x255.png 468w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-85x46.png 85w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-800x436.png 800w, https://bolivarvargasadvogados.com.br/wp-content/uploads/2022/11/image-165x90.png 165w"
+                                                sizes="(max-width: 886px) 100vw, 886px"></figure>
+                                        </div>
                                 `,
-                                shortDescription: `Confira 5 mudanças da reforma tributária que podem impactar as atividades empresariais.`,
-                                image: './assets/img/artigos/image-3.jpg',
-                            },
-                            {
-                                name: '5 MUDANÇAS DA REFORMA TRIBUTÁRIA QUE DEVEM IMPACTAR OS EMPRESÁRIOS ',
-                                description: `
-                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                                    Pellentesque ac sollicitudin est, sed sodales dolor. Etiam porta imperdiet augue. Suspendisse </p>
-                                    <p>auctor ipsum vel diam ultricies, eu imperdiet nisl pharetra. Vivamus et turpis ut sapien 
-                                    efficitur ullamcorper. Integer at porta magna, id rutrum enim. Vivamus vel ex vel enim </p>
-                                    <p>elementum porttitor. Mauris luctus venenatis lorem, at faucibus elit luctus at. Nam porttitor 
-                                    auctor nibh sit amet efficitur. Morbi eu scelerisque tortor. Sed hendrerit turpis a felis </p>
-                                    <p>placerat, non tempus urna tempor. Sed eu libero nec nibh auctor condimentum. Nulla varius 
-                                    nibh quis turpis suscipit, at sagittis tellus dignissim.</p>
-                                    <p>Suspendisse hendrerit ante eget massa fermentum sollicitudin. Fusce sed arcu cursus, 
-                                    facilisis nisi quis, fermentum mi. Vestibulum condimentum porttitor justo id vestibulum. </p>
-                                    <p>Praesent malesuada erat elementum, efficitur nisi id, mattis risus. Vestibulum ante ipsum 
-                                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed augue tempus, </p>
-                                    <p>ullamcorper purus non, egestas sapien. Etiam et luctus lacus, non blandit tellus. Sed a 
-                                    pellentesque nulla. Ut cursus velit hendrerit, semper velit et, bibendum sapien. Orci varius </p>
-                                    <p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sit amet 
-                                    eleifend libero. Suspendisse dignissim sit amet odio sit amet iaculis. Fusce mattis ex eget </p>
-                                    <p>diam blandit blandit.</p>
-                                `,
-                                shortDescription: `Confira 5 mudanças da reforma tributária que podem impactar as atividades empresariais.`,
+                                shortDescription: `O Superior Tribunal de Justiça, ao realizar o julgamento do Tema 1.113 dos Recursos Repetitivos estabeleceu três teses que são de extrema relevância para(...)`,
                                 image: './assets/img/artigos/image-3.jpg',
                             },
                         ],

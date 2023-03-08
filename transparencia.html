@@ -28,10 +28,17 @@
                 }
             },
             created(){
-                $.get('https://portaldatransparencia.gov.br/servidores/consulta/resultado?paginacaoSimples=false&tamanhoPagina=100&offset=0&direcaoOrdenacao=asc&colunaOrdenacao=nome&orgaosServidorLotacao=OR21300&situacao=2%2C1&colunasSelecionadas=detalhar%2Ctipo%2Ccpf%2Cnome%2CorgaoServidorLotacao%2Cmatricula%2Csituacao%2Cfuncao%2Ccargo%2Cquantidade&t=Yai9K2pWEkN9881gBCjp&_=1678209379948')
-                    .done(function(resposta){
-                        this.dasdos = resposta.data;
-                    }.bind(this));
+                var settings = {
+                    "url": "https://portaldatransparencia.gov.br/popup/servidores/orgao-lotacao/resultado?paginacaoSimples=false&tamanhoPagina=50&offset=0&direcaoOrdenacao=asc&colunaOrdenacao=descricao&colunasSelecionadas=selecionar%2Cid%2Ctipo%2Ccodigo%2Cdescricao&tipoEstruturaAdministrativa=ORGAO_SUPERIOR&_=1678294817994",
+                    "method": "GET",
+                    "timeout": 0,
+                    "headers": {
+                        "Cookie": "NSC_JOibrajdb4h3qgcckulqmuceplvn5eb=ffffffff09e9012f45525d5f4f58455e445a4a4229a0"
+                    },
+                };
+                $.ajax(settings).done(function (response) {
+  console.log(response);
+});
             }
         })
     </script>
